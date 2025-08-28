@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+:root {
+  /* France colors */
+  --france-bleu: #002395;
+  --france-blanc: #FFFFFF;
+  --france-rouge: #ED2939;
+  
+  /* Or (Gold) colors */
+  --or-light: #FFD700;
+  --or-default: #D4AF37;
+  --or-dark: #B8860B;
+  
+  /* Base colors */
+  --background: #ffffff;
+  --foreground: #171717;
+  --noir: #000000;
+}
+
+@theme inline {
+  /* Base theme */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  
+  /* France theme colors */
+  --color-france-bleu: var(--france-bleu);
+  --color-france-blanc: var(--france-blanc);
+  --color-france-rouge: var(--france-rouge);
+  
+  /* Or theme colors */
+  --color-or-light: var(--or-light);
+  --color-or: var(--or-default);
+  --color-or-dark: var(--or-dark);
+  
+  /* Typography */
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Reset sélectif pour certains éléments seulement */
+body, h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+
+/* Les paragraphes gardent leurs marges par défaut pour le centrage */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+}
+
+/* Utility classes */
+.gradient-france {
+  background: linear-gradient(90deg, var(--france-bleu) 0%, var(--france-blanc) 50%, var(--france-rouge) 100%);
+}
+
+.text-gradient-or {
+  background: linear-gradient(135deg, var(--or-light), var(--or-default), var(--or-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Effet de grain pour les fonds */
+.grain {
+  position: relative;
+}
+
+.grain::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.03;
+  z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.grain-strong::before {
+  opacity: 0.08;
+}

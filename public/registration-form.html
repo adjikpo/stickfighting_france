@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WSA European Championships 2025 - Formulaire d'inscription</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #002395, #FFD700, #ED2939);
+            color: white;
+            border-radius: 10px;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .event-info {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .event-info h3 {
+            color: #002395;
+            margin-bottom: 10px;
+        }
+        
+        .price-box {
+            background: #FFD700;
+            color: #000;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .form-section {
+            margin-bottom: 25px;
+        }
+        
+        .form-section h3 {
+            color: #002395;
+            border-bottom: 2px solid #002395;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .categories {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .categories h4 {
+            color: #002395;
+            margin-bottom: 10px;
+        }
+        
+        .category-group {
+            margin-bottom: 15px;
+        }
+        
+        .category-group h5 {
+            color: #666;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 8px;
+        }
+        
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            font-weight: normal;
+            font-size: 14px;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            margin-right: 8px;
+            width: auto;
+        }
+        
+        .payment-info {
+            background: #e8f4f8;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .signature-section {
+            margin-top: 30px;
+            padding: 20px;
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+        }
+        
+        .signature-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .signature-box {
+            border-bottom: 1px solid #333;
+            padding-top: 40px;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        @media print {
+            body {
+                max-width: 100%;
+            }
+            .header {
+                background: #002395 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>WSA EUROPEAN CHAMPIONSHIPS 2025</h1>
+        <h2>World Sport Arnis</h2>
+        <p style="font-size: 16px; margin-top: 10px;">FORMULAIRE D'INSCRIPTION OFFICIEL</p>
+    </div>
+    
+    <div class="event-info">
+        <h3>26 - 27 - 28 SEPTEMBRE 2025</h3>
+        <p><strong>Centre Sportif - Rue Jean Rigaud, Écully 69130</strong></p>
+        <p>Lyon, France</p>
+    </div>
+    
+    <div class="price-box">
+        FRAIS D'INSCRIPTION : 150 € PAR COMBATTANT
+        <p style="font-size: 14px; margin-top: 5px;">Participation illimitée à toutes les catégories</p>
+    </div>
+    
+    <form>
+        <div class="form-section">
+            <h3>INFORMATIONS PERSONNELLES</h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Nom :</label>
+                    <input type="text" name="lastname" required>
+                </div>
+                <div class="form-group">
+                    <label>Prénom :</label>
+                    <input type="text" name="firstname" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Âge :</label>
+                    <input type="number" name="age" min="5" max="100" required>
+                </div>
+                <div class="form-group">
+                    <label>Sexe :</label>
+                    <div style="display: flex; gap: 20px; margin-top: 8px;">
+                        <label style="display: flex; align-items: center; font-weight: normal;">
+                            <input type="radio" name="gender" value="homme" required style="width: auto; margin-right: 5px;"> Homme
+                        </label>
+                        <label style="display: flex; align-items: center; font-weight: normal;">
+                            <input type="radio" name="gender" value="femme" required style="width: auto; margin-right: 5px;"> Femme
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Pays représenté :</label>
+                    <input type="text" name="country" required>
+                </div>
+                <div class="form-group">
+                    <label>Taille T-shirt :</label>
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 8px;">
+                        <label style="display: flex; align-items: center; font-weight: normal;">
+                            <input type="radio" name="tshirt_size" value="XS" required style="width: auto; margin-right: 5px;"> XS
+                        </label>
+                        <label style="display: flex; align-items: center; font-weight: normal;">
+                            <input type="radio" name="tshirt_size" value="S" required style="width: auto; margin-right: 5px;"> S
+                        </label>
+                        <label style="display: flex; align-items: center; font-weight: normal;">
+                            <input type="radio" name="tshirt_size" value="M" required style="width: auto; margin-right: 5px;"> M
+                        </label>
+                        <label style="display: flex; align-items: center; font-weight: normal;">
+                            <input type="radio" name="tshirt_size" value="L" required style="width: auto; margin-right: 5px;"> L
+                        </label>
+                        <label style="display: flex; align-items: center; font-weight: normal;">
+                            <input type="radio" name="tshirt_size" value="XL" required style="width: auto; margin-right: 5px;"> XL
+                        </label>
+                        <label style="display: flex; align-items: center; font-weight: normal;">
+                            <input type="radio" name="tshirt_size" value="XXL" required style="width: auto; margin-right: 5px;"> XXL
+                        </label>
+                        <label style="display: flex; align-items: center; font-weight: normal;">
+                            <input type="radio" name="tshirt_size" value="XXXL" required style="width: auto; margin-right: 5px;"> XXXL
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-section">
+            <h3>COORDONNÉES</h3>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Email :</label>
+                    <input type="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Directeur d'équipe :</label>
+                    <input type="text" name="team_director">
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-section">
+            <h3>CATÉGORIES DE COMPÉTITION</h3>
+            <div class="categories">
+                <p style="margin-bottom: 15px; color: #666; font-style: italic;">
+                    Cochez toutes les catégories auxquelles vous souhaitez participer (participation illimitée incluse)
+                </p>
+                
+                <div class="checkbox-group" style="grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));">
+                    <label><input type="checkbox" name="cat_stick"> Stick</label>
+                    <label><input type="checkbox" name="cat_double_stick"> Double Stick</label>
+                    <label><input type="checkbox" name="cat_padded"> Padded</label>
+                    <label><input type="checkbox" name="cat_double_padded"> Double Padded</label>
+                    <label><input type="checkbox" name="cat_knives_padded"> Knives Padded</label>
+                    <label><input type="checkbox" name="cat_forms_trad"> Formes Traditionnelles</label>
+                    <label><input type="checkbox" name="cat_forms_creative"> Formes Créatives</label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="payment-info">
+            <h4 style="color: #002395; margin-bottom: 10px;">INFORMATIONS DE PAIEMENT</h4>
+            <p><strong>Montant total à régler : 150 €</strong></p>
+            <p style="margin-top: 10px;">Modes de paiement acceptés :</p>
+            <ul style="margin-left: 20px; margin-top: 5px;">
+                <li><strong>PayPal</strong> : Envoyer à fabricefousse29@orange.fr</li>
+                <li><strong>Espèces</strong> : Sur place le jour de l'événement</li>
+            </ul>
+            <p style="margin-top: 15px; font-size: 14px;">
+                <strong>Contact :</strong> fabricefousse29@orange.fr
+            </p>
+            <p style="margin-top: 10px; font-style: italic; font-size: 13px;">
+                Le paiement doit être effectué avant le 15 septembre 2025 pour valider l'inscription.
+            </p>
+        </div>
+        
+        <div class="signature-section">
+            <h4 style="color: #002395; margin-bottom: 10px;">DÉCLARATION ET SIGNATURE</h4>
+            <p style="font-size: 14px; line-height: 1.8;">
+                Je soussigné(e) certifie que toutes les informations fournies sont exactes. 
+                Je reconnais participer à cette compétition à mes propres risques et décharge 
+                les organisateurs de toute responsabilité en cas de blessure. Je certifie être 
+                en bonne santé physique et apte à la pratique de l'Arnis en compétition. 
+                Je m'engage à respecter les règles de la compétition et l'esprit sportif.
+            </p>
+            
+            <div class="signature-row">
+                <div>
+                    <div class="signature-box"></div>
+                    <p style="margin-top: 5px; font-size: 12px;">Signature du participant</p>
+                </div>
+                <div>
+                    <div class="signature-box"></div>
+                    <p style="margin-top: 5px; font-size: 12px;">Date</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Section autorisation parentale pour mineurs -->
+        <div class="signature-section" style="background: #fff3cd; border-color: #ffc107;">
+            <h4 style="color: #002395; margin-bottom: 10px;">AUTORISATION PARENTALE (Pour les mineurs uniquement)</h4>
+            <p style="font-size: 14px; line-height: 1.8; margin-bottom: 20px;">
+                Je soussigné(e), <span style="border-bottom: 1px solid #333; display: inline-block; width: 250px;"></span>,
+                parent ou tuteur légal de l'enfant inscrit ci-dessus, autorise sa participation au WSA European Championships 2025.
+                Je certifie que mon enfant est apte médicalement à pratiquer l'Arnis en compétition et décharge les organisateurs
+                de toute responsabilité. J'autorise les organisateurs à prendre toutes les mesures nécessaires en cas d'urgence médicale.
+            </p>
+            
+            <div class="form-row" style="margin-bottom: 30px;">
+                <div class="form-group">
+                    <label>Nom du parent/tuteur :</label>
+                    <input type="text" name="parent_name">
+                </div>
+                <div class="form-group">
+                    <label>Téléphone du parent/tuteur :</label>
+                    <input type="tel" name="parent_phone">
+                </div>
+            </div>
+            
+            <div class="signature-row">
+                <div>
+                    <div class="signature-box"></div>
+                    <p style="margin-top: 5px; font-size: 12px;">Signature du parent/tuteur</p>
+                </div>
+                <div>
+                    <div class="signature-box"></div>
+                    <p style="margin-top: 5px; font-size: 12px;">Date</p>
+                </div>
+            </div>
+        </div>
+    </form>
+    
+    <div class="footer">
+        <p><strong>FRANCE STICK FIGHTING</strong></p>
+        <p>Délégation française de Kali, Eskrima & Arnis</p>
+        <p>Email: fabricefousse29@orange.fr</p>
+        <p>© 2025 WSA European Championships - Tous droits réservés</p>
+        <p style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #ddd; font-size: 11px; color: #888;">
+            <em>English version available below / Version anglaise disponible ci-dessous</em>
+        </p>
+    </div>
+</body>
+</html>
