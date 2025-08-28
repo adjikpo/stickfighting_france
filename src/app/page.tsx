@@ -241,16 +241,16 @@ export default function Home() {
                   <p className="text-sm text-gray-400 mb-4">
                     {t.contact.emailInfo}
                   </p>
-                  <div className="flex justify-center items-center gap-6">
+                  <div className="flex flex-col md:flex-row justify-center items-center gap-3 md:gap-6">
                     <div className="flex items-center gap-2">
                       <Mail className="text-[var(--or-light)]" size={20} />
-                      <p className="text-base font-semibold text-[var(--or-light)]">
+                      <p className="text-sm md:text-base font-semibold text-[var(--or-light)]">
                         fabricefousse29@orange.fr
                       </p>
                     </div>
                     <div className="flex items-center gap-2">
                       <Instagram className="text-[var(--or-light)]" size={20} />
-                      <p className="text-base font-semibold text-[var(--or-light)]">
+                      <p className="text-sm md:text-base font-semibold text-[var(--or-light)]">
                         @francestickfighting
                       </p>
                     </div>

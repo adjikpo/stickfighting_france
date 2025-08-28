@@ -13,6 +13,11 @@ export const metadata: Metadata = {
   description: "Fédération française de Kali Eskrima Arnis - Promouvoir le stick fighting en France et représenter la France dans les compétitions internationales",
   keywords: "kali, eskrima, arnis, stick fighting, france, fédération, arts martiaux, philippins, compétition",
   authors: [{ name: "France Stick Fighting" }],
+  icons: {
+    icon: '/favicon.png',
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
+  },
   openGraph: {
     title: "France Stick Fighting",
     description: "Fédération française de Kali Eskrima Arnis",
