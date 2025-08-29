@@ -216,6 +216,80 @@
             margin: 5px 0;
         }
         
+        .rules-box {
+            background: #e8f4fd;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            text-align: center;
+            border: 1px solid #002654;
+        }
+        
+        .rules-button {
+            display: inline-block;
+            background: #002654;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .rules-button:hover {
+            background: #D4A567;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .fee-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .fee-box {
+            background: linear-gradient(135deg, #fff8e5 0%, #ffedcc 100%);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid #D4A567;
+        }
+        
+        .fee-box h4 {
+            color: #002654;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .fee-amount {
+            font-size: 36px;
+            font-weight: bold;
+            color: #002654;
+            margin: 10px 0;
+        }
+        
+        .fee-details {
+            font-size: 14px;
+            color: #666;
+            margin: 5px 0;
+        }
+        
+        .fee-note {
+            font-size: 12px;
+            color: #888;
+            font-style: italic;
+            margin-top: 10px;
+        }
+        
+        @media (max-width: 600px) {
+            .fee-info {
+                grid-template-columns: 1fr;
+            }
+        }
+        
         .parental-section {
             background: #fff8e5;
             border: 2px solid #D4A567;
@@ -262,6 +336,37 @@
         <strong>FORMULAIRE D'INSCRIPTION OFFICIEL</strong>
         <p>À renvoyer complété par email à : fabricefousse29@orange.fr</p>
         <p><strong>Date limite d'inscription : 20 septembre 2025</strong></p>
+    </div>
+
+    <div class="rules-box">
+        <h4 style="color: #002654; margin-bottom: 10px;">📋 INFORMATIONS IMPORTANTES</h4>
+        <a href="https://www.worldsportarnis.co.uk/general-1" target="_blank" class="rules-button">
+            Consulter les règles officielles WSA
+        </a>
+        <p style="margin-top: 15px; font-size: 14px; color: #666;">
+            <strong>Rappel des règles spéciales WSA :</strong>
+        </p>
+        <ul style="text-align: left; margin: 10px 20px; font-size: 14px; color: #666;">
+            <li>Chaque équipe nationale : maximum 25 membres adultes (hommes et femmes)</li>
+            <li>Maximum 2 combattants par pays dans chaque catégorie de poids</li>
+            <li>Les formes ne doivent pas dépasser 2 minutes</li>
+            <li>Aucune arme réelle n'est autorisée</li>
+        </ul>
+    </div>
+
+    <div class="fee-info">
+        <div class="fee-box">
+            <h4>💰 FRAIS D'INSCRIPTION</h4>
+            <p class="fee-amount">150 €</p>
+            <p class="fee-details">par combattant</p>
+            <p class="fee-note">Accès illimité à toutes les catégories</p>
+        </div>
+        <div class="fee-box">
+            <h4>📅 DATES IMPORTANTES</h4>
+            <p class="fee-details"><strong>Inscription avant :</strong> 20 sept. 2025</p>
+            <p class="fee-details"><strong>Paiement avant :</strong> 15 sept. 2025</p>
+            <p class="fee-details"><strong>Compétition :</strong> 26-28 sept. 2025</p>
+        </div>
     </div>
 
     <form>
@@ -395,8 +500,15 @@
             </div>
             
             <div class="form-group" style="margin-top: 20px;">
-                <label>Poids :</label>
-                <input type="text">
+                <label>Catégorie de poids :</label>
+                <select name="weight_category">
+                    <option value="">-- Sélectionner --</option>
+                    <option value="welterweight">Welterweight (moins de 70 kg)</option>
+                    <option value="middleweight">Middleweight (70-80 kg)</option>
+                    <option value="heavyweight">Heavyweight (plus de 80 kg)</option>
+                    <option value="senior">Senior (45 ans et plus)</option>
+                </select>
+                <p style="font-size: 12px; color: #666; margin-top: 5px;">* Pour les catégories enfants/cadets, veuillez nous contacter</p>
             </div>
         </div>
 

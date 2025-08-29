@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Calendar, MapPin, Users, Trophy, ChevronRight, Download, Mail, Instagram } from "lucide-react";
+import { Calendar, MapPin, Users, Trophy, ChevronRight, Download, Mail, Instagram, ExternalLink, FileText } from "lucide-react";
 import { useState } from "react";
 
 export default function Home() {
@@ -31,7 +31,9 @@ export default function Home() {
         titleDesc: "Médailles officielles",
         registrationOpen: "Inscriptions Ouvertes",
         registrationText: "Rejoignez cet événement exceptionnel et représentez votre pays",
-        registerButton: "S'inscrire maintenant"
+        registerButton: "S'inscrire maintenant",
+        rulesButton: "Règles officielles WSA",
+        rulesInfo: "Consultez le règlement complet de la compétition"
       },
       about: {
         title: "Qui sommes-nous",
@@ -82,7 +84,9 @@ export default function Home() {
         titleDesc: "Official medals",
         registrationOpen: "Registration Open",
         registrationText: "Join this exceptional event and represent your country",
-        registerButton: "Register now"
+        registerButton: "Register now",
+        rulesButton: "Official WSA Rules",
+        rulesInfo: "View the complete competition regulations"
       },
       about: {
         title: "About us",
@@ -211,7 +215,7 @@ export default function Home() {
                 </div>
               </div>
               
-              {/* Formulaire d'inscription */}
+              {/* Formulaire d'inscription et règles */}
               <div className="border-t border-white/20 pt-8">
                 <div className="text-center mb-8">
                   <p className="text-lg font-bold mb-4">{t.wsa.registrationOpen}</p>
@@ -220,22 +224,45 @@ export default function Home() {
                   </p>
                 </div>
                 
+                {/* Bouton des règles WSA */}
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 mb-6">
+                  <div className="flex items-center justify-center mb-4">
+                    <FileText className="text-[var(--or-light)] mr-2" size={24} />
+                    <h3 className="text-lg font-bold text-[var(--or-light)]">
+                      {t.wsa.rulesInfo}
+                    </h3>
+                  </div>
+                  <div className="text-center">
+                    <a 
+                      href="https://www.worldsportarnis.co.uk/general-1"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center px-6 py-2.5 bg-white/20 hover:bg-white/30 text-white font-semibold text-sm rounded transition-all border border-white/40"
+                    >
+                      <ExternalLink className="mr-2" size={16} />
+                      {t.wsa.rulesButton}
+                    </a>
+                  </div>
+                </div>
+                
                 {/* Zone de téléchargement du formulaire */}
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 mb-6">
-                  <h3 className="text-lg font-bold text-[var(--or-light)] mb-4">
+                  <h3 className="text-lg font-bold text-[var(--or-light)] mb-4 text-center">
                     {t.contact.registration}
                   </h3>
-                  <p className="text-sm text-gray-300 mb-6">
+                  <p className="text-sm text-gray-300 mb-6 text-center">
                     {t.contact.registrationText}
                   </p>
-                  <a 
-                    href={`/${t.contact.pdfFile}`} 
-                    download={t.contact.pdfFile}
-                    className="inline-flex items-center justify-center px-6 py-2.5 bg-[var(--or-light)] hover:bg-[var(--or-default)] text-gray-900 font-semibold text-sm rounded transition-all"
-                  >
-                    <Download className="mr-2" size={16} />
-                    {t.contact.downloadButton}
-                  </a>
+                  <div className="text-center">
+                    <a 
+                      href={`/${t.contact.pdfFile}`} 
+                      download={t.contact.pdfFile}
+                      className="inline-flex items-center justify-center px-6 py-2.5 bg-[var(--or-light)] hover:bg-[var(--or-default)] text-gray-900 font-semibold text-sm rounded transition-all"
+                    >
+                      <Download className="mr-2" size={16} />
+                      {t.contact.downloadButton}
+                    </a>
+                  </div>
                 </div>
                 
                 {/* Informations de contact */}
