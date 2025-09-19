@@ -12,6 +12,7 @@ interface NavbarProps {
 
 export default function Navbar({ language, setLanguage }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const navItems = {
     fr: [
@@ -48,12 +49,38 @@ export default function Navbar({ language, setLanguage }: NavbarProps) {
 
           {/* Navigation à droite */}
           <div className="flex items-center ml-auto">
-            <a
-              href="#evenement"
-              className="text-white hover:text-[var(--or-default)] transition-colors font-semibold text-lg mx-4"
+            {/* WSA Championship with hover submenu */}
+            <div
+              className="relative"
+              onMouseEnter={() => setIsDropdownOpen(true)}
+              onMouseLeave={() => setIsDropdownOpen(false)}
             >
-              {navItems[language][0].label}
-            </a>
+              <a
+                href="#evenement"
+                className="text-white hover:text-[var(--or-default)] transition-colors font-semibold text-lg mx-4"
+              >
+                {navItems[language][0].label}
+              </a>
+              {/* Dropdown submenu */}
+              {isDropdownOpen && (
+                <div className="absolute right-0 top-full z-50">
+                  <div className="mt-1 bg-black/95 border border-gray-800 rounded-md shadow-lg w-48 py-2">
+                    <Link
+                      href="/planning"
+                      className="block px-4 py-2 text-white hover:text-[var(--or-default)] hover:bg-gray-800 transition-colors"
+                    >
+                      {language === "fr" ? "Planning" : "Schedule"}
+                    </Link>
+                    <Link
+                      href="/resultats"
+                      className="block px-4 py-2 text-white hover:text-[var(--or-default)] hover:bg-gray-800 transition-colors"
+                    >
+                      {language === "fr" ? "Résultats" : "Results"}
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </div>
             
             {/* Language Switcher */}
             <button
@@ -119,6 +146,21 @@ export default function Navbar({ language, setLanguage }: NavbarProps) {
                 {item.label}
               </Link>
             ))}
+            {/* Sub-items for WSA Championship */}
+            <Link
+              href="/planning"
+              className="block px-5 py-2 text-white/90 hover:bg-gray-800 rounded-md"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {language === "fr" ? "Planning" : "Schedule"}
+            </Link>
+            <Link
+              href="/resultats"
+              className="block px-5 py-2 text-white/90 hover:bg-gray-800 rounded-md"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {language === "fr" ? "Résultats" : "Results"}
+            </Link>
             <button
               onClick={() => {
                 setLanguage(language === "fr" ? "en" : "fr");

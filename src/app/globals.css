@@ -13,7 +13,7 @@
   
   /* Base colors */
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #000000;
   --noir: #000000;
 }
 
@@ -39,13 +39,17 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground: #000000;
   }
 }
 
 * {
   box-sizing: border-box;
 }
+
+/* Hide scrollbars on mobile chip nav */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
 /* Reset sélectif pour certains éléments seulement */
 body, h1, h2, h3, h4, h5, h6 {

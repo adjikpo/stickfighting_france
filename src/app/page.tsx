@@ -121,6 +121,10 @@ export default function Home() {
   
   const t = content[language];
   
+  // Build Google Maps URL for the event location using the address lines
+  const mapsQuery = encodeURIComponent(`${t.wsa.location1}, ${t.wsa.location2}`);
+  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`;
+  
   return (
     <>
       <Navbar language={language} setLanguage={setLanguage} />
@@ -189,9 +193,36 @@ export default function Home() {
                 <p className="text-base text-gray-300 mb-6">{t.wsa.subtitle}</p>
                 <div className="inline-block bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3">
                   <p className="text-xl font-bold text-[var(--or-light)]">{t.wsa.dates}</p>
-                  <p className="text-sm text-gray-300 mt-1">{t.wsa.location1}</p>
-                  <p className="text-sm text-gray-300">{t.wsa.location2}</p>
+                  <a
+                    href={mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group mt-1 block"
+                    aria-label={`Ouvrir l'adresse dans Google Maps: ${t.wsa.location1}, ${t.wsa.location2}`}
+                  >
+                    <p className="text-sm text-gray-300 group-hover:text-white underline-offset-2 group-hover:underline transition-colors">{t.wsa.location1}</p>
+                    <p className="text-sm text-gray-300 group-hover:text-white underline-offset-2 group-hover:underline transition-colors">{t.wsa.location2}</p>
+                  </a>
                 </div>
+              </div>
+
+              {/* Petite carte cliquable vers Google Maps */}
+              <div className="mt-6 mb-8 md:mb-10">
+                <a
+                  href={mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block relative h-28 md:h-32 rounded-lg overflow-hidden border border-white/20 hover:border-[var(--or-light)] transition-colors"
+                  aria-label={`Ouvrir la carte dans Google Maps: ${t.wsa.location1}, ${t.wsa.location2}`}
+                >
+                  <iframe
+                    src={`https://www.google.com/maps?q=${mapsQuery}&output=embed`}
+                    className="w-full h-full pointer-events-none"
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                  <div className="absolute inset-0" aria-hidden="true" />
+                </a>
               </div>
               
               {/* Cartes info */}
