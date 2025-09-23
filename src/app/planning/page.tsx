@@ -3,7 +3,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useState } from "react";
-import { Sun, Sunset, Clock } from "lucide-react";
+import { Sun, Sunset, Clock, MapPin } from "lucide-react";
 
 export default function PlanningPage() {
   const [language, setLanguage] = useState<'fr' | 'en'>('fr');
@@ -13,6 +13,8 @@ export default function PlanningPage() {
       title: "Planning",
       intro: "Programme prévisionnel (sous réserve d'ajustements) :",
       lunch: "Pause déjeuner (12:00–14:00)",
+      location1: "Centre Sportif - Rue Jean Rigaud",
+      location2: "Écully 69130",
       days: [
         {
           id: "samedi-27-septembre",
@@ -40,6 +42,8 @@ export default function PlanningPage() {
       title: "Schedule",
       intro: "Provisional schedule (subject to changes):",
       lunch: "Lunch break (12:00 PM–2:00 PM)",
+      location1: "Sports Center - Rue Jean Rigaud",
+      location2: "Écully 69130",
       days: [
         {
           id: "saturday-27-september",
@@ -65,6 +69,10 @@ export default function PlanningPage() {
     },
   }[language];
 
+  // Build Google Maps URL from localized address
+  const mapsQuery = encodeURIComponent(`${t.location1}, ${t.location2}`);
+  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`;
+
   return (
     <>
       <Navbar language={language} setLanguage={setLanguage} />
@@ -74,6 +82,21 @@ export default function PlanningPage() {
             {t.title}
           </h1>
           <p className="text-center text-gray-700 mb-6">{t.intro}</p>
+
+          {/* Lieu de l'événement */}
+          <div className="bg-white border border-gray-200 rounded-lg p-4 mb-6 text-center">
+            <a
+              href={mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-[var(--france-bleu)] hover:text-[var(--or-default)] transition-colors"
+              aria-label={`Ouvrir l'adresse dans Google Maps: ${t.location1}, ${t.location2}`}
+            >
+              <MapPin size={18} />
+              <span className="font-semibold">{t.location1}</span>
+              <span className="text-gray-700">— {t.location2}</span>
+            </a>
+          </div>
 
           <div className="space-y-5 mb-8">
             {t.days.map((d: any) => (
