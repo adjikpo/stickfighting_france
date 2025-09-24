@@ -81,6 +81,13 @@ export default function Navbar({ language, setLanguage }: NavbarProps) {
                 </div>
               )}
             </div>
+
+            <Link
+              href="/blog"
+              className="text-white hover:text-[var(--or-default)] transition-colors font-semibold text-lg mx-4"
+            >
+              {language === "fr" ? "Articles" : "Blog"}
+            </Link>
             
             {/* Language Switcher */}
             <button
@@ -160,6 +167,13 @@ export default function Navbar({ language, setLanguage }: NavbarProps) {
               onClick={() => setIsMenuOpen(false)}
             >
               {language === "fr" ? "Résultats" : "Results"}
+            </Link>
+            <Link
+              href="/blog"
+              className="block px-5 py-2 text-white/90 hover:bg-gray-800 rounded-md"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {language === "fr" ? "Articles" : "Blog"}
             </Link>
             <button
               onClick={() => {
