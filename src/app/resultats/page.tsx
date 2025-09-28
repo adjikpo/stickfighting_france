@@ -141,7 +141,7 @@ export default function ResultatsPage() {
     ['homme', 'female', 'junior', 'cadet', 'lightweight', 'mediumweight', 'heavyweight-under40', 'heavyweight'].forEach(cat => {
       if (availableCategories.includes(cat)) {
         tabs.push(cat);
-        tabLabels[cat] = t.weightCategories[cat] || cat;
+        tabLabels[cat] = (t.weightCategories as any)[cat] || cat;
       }
     });
     
