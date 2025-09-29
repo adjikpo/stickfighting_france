@@ -28,6 +28,21 @@ const resultsData: ResultsData = {
     "female": { first: "Diana Fauner", second: "Gretchen Ivey" },
     "junior": { first: "Andre Alexandre", second: "-" },
   },
+  "simple-baton": {
+    "female": { first: "Diana Fauner", second: "Gretchen Ivey", third: "Blandine Pascal" },
+    "junior": { first: "Andre Alexander", second: "Sammy Hubble" },
+    "cadet": { first: "Coby BLACKSTOCK", second: "Kyllian Carmona" },
+    "lightweight": { first: "Arthur Djikpo", second: "Lamine Bensalem" },
+    "heavyweight-under40": { first: "Musab Hadimli", second: "Richard Gordon", third: "Vincent Mouchfit" },
+    "heavyweight": { first: "Maxime Gaudet Trafit", second: "Leigh Mitchell", third: "Maxence BEROUJON" },
+  },
+  "double-baton": {
+    "female": { first: "Diana Fauner", second: "Gretchen Ivey" },
+    "junior": { first: "Andre Alexander", second: "Sammy Hubble" },
+    "cadet": { first: "Coby BLACKSTOCK", second: "Kyllian Carmona" },
+    "heavyweight-under40": { first: "Richard Gordon", second: "Christophe Kirppie", third: "Arthur Djikpo" },
+    "heavyweight": { first: "Maxime Gaudet Trafit", second: "Maxence BEROUJON", third: "Leigh Mitchell" },
+  },
   "padded-simple": {
     "female": { first: "Blandine Pascal", second: "Gretchen Ivey", third: "Marie Potier" },
     "junior": { first: "Sammy Hubble", second: "Andre Alexander" },
@@ -52,6 +67,9 @@ const resultsData: ResultsData = {
     "mediumweight": { first: "Christophe Pic", second: "Musab Hadimli", third: "Richard Gordon" },
     "heavyweight-under40": { first: "Damien L-M", second: "Maxence BEROUJON" },
     "heavyweight": { first: "Maxime Gaudet Trafit", second: "Leigh Mitchell", third: "Stéphane Vazeille" },
+  },
+  "equipe": {
+    "team": { first: "Team France", second: "Team Angleterre" },
   },
 };
 
@@ -80,7 +98,8 @@ export default function ResultatsPage() {
         homme: "Homme",
         female: "Femme",
         junior: "Junior",
-        cadet: "Cadet"
+        cadet: "Cadet",
+        team: "Équipe"
       },
       weightNoteSV: "Catégories de poids: Seniors & Vétérans uniquement.",
       weightNoteWC: "Pas de catégories de poids pour Femmes et Enfants.",
@@ -107,7 +126,8 @@ export default function ResultatsPage() {
         homme: "Men",
         female: "Women",
         junior: "Junior",
-        cadet: "Cadet"
+        cadet: "Cadet",
+        team: "Team"
       },
       weightNoteSV: "Weight categories: Seniors & Veterans only.",
       weightNoteWC: "No weight categories for Women and Children.",
@@ -118,11 +138,11 @@ export default function ResultatsPage() {
   const categories = [
     { id: "formes-traditionnel", fr: "Formes - Traditionnel", en: "Forms - Traditional" },
     { id: "formes-creatif", fr: "Formes - Créatif (Open Form)", en: "Forms - Creative (Open Form)" },
-    { id: "simple-baton", fr: "Simple bâton", en: "Single stick" },
-    { id: "double-baton", fr: "Double bâton", en: "Double stick" },
     { id: "padded-simple", fr: "Padded Simple", en: "Padded Single" },
     { id: "padded-double", fr: "Padded Double", en: "Padded Double" },
     { id: "padded-couteaux", fr: "Padded Couteaux", en: "Padded Knives" },
+    { id: "simple-baton", fr: "Simple bâton", en: "Single stick" },
+    { id: "double-baton", fr: "Double bâton", en: "Double stick" },
     { id: "equipe", fr: "Équipe", en: "Team" },
   ];
 
@@ -137,8 +157,8 @@ export default function ResultatsPage() {
     const tabs: string[] = [];
     const tabLabels: { [key: string]: string } = {};
     
-    // Ajouter les catégories dans l'ordre : général, âge, poids
-    ['homme', 'female', 'junior', 'cadet', 'lightweight', 'mediumweight', 'heavyweight-under40', 'heavyweight'].forEach(cat => {
+    // Ajouter les catégories dans l'ordre : junior, cadet, femme, poids léger, poids lourd -40, poids lourd, homme, équipe
+    ['junior', 'cadet', 'female', 'lightweight', 'mediumweight', 'heavyweight-under40', 'heavyweight', 'homme', 'team'].forEach(cat => {
       if (availableCategories.includes(cat)) {
         tabs.push(cat);
         tabLabels[cat] = (t.weightCategories as any)[cat] || cat;
