@@ -1,10 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Calendar, MapPin, Users, Trophy, ChevronRight, Download, Mail, Instagram, ExternalLink, FileText } from "lucide-react";
+import { Calendar, Users, Trophy, ChevronRight, ExternalLink, Instagram } from "lucide-react";
 import { useState } from "react";
 
 export default function Home() {
@@ -14,8 +13,8 @@ export default function Home() {
     fr: {
       hero: {
         subtitle: "Délégation française des arts martiaux philippins",
-        button: "WSA European Championship 2025",
-        buttonMobile: "Championship 2025"
+        button: "Résultats WSA 2025",
+        buttonMobile: "Résultats WSA"
       },
       wsa: {
         title: "WSA European Championship",
@@ -33,7 +32,9 @@ export default function Home() {
         registrationText: "Rejoignez cet événement exceptionnel et représentez votre pays",
         registerButton: "S'inscrire maintenant",
         rulesButton: "Règles officielles WSA",
-        rulesInfo: "Consultez le règlement complet de la compétition"
+        rulesInfo: "Consultez le règlement complet de la compétition",
+        noticeTitle: "Saison 2025 terminée",
+        noticeText: "La saison européenne 2025 est terminée. 2026 sera une saison mondiale."
       },
       about: {
         title: "Qui sommes-nous",
@@ -62,13 +63,26 @@ export default function Home() {
         emailContact: "Email : fabricefousse29@orange.fr",
         instagramContact: "Instagram : @francestickfighting",
         pdfFile: "WSA-European-Championship-2025-Inscription-FR.pdf"
+      },
+      articles: {
+        title: "Articles",
+        subtitle: "Dernières actualités",
+        card1Title: "Résultats officiels",
+        card1Desc: "Consultez les classements et podiums du WSA European Open 2025.",
+        card1Link: "/resultats",
+        card2Title: "Tous nos articles",
+        card2Desc: "Retrouvez nos annonces, comptes rendus et informations.",
+        card2Link: "/blog",
+        card3Title: "Photos & Stories",
+        card3Desc: "Suivez-nous sur Instagram pour voir les moments forts.",
+        card3Link: "https://instagram.com/francestickfighting"
       }
     },
     en: {
       hero: {
         subtitle: "French delegation of Philippine martial arts",
-        button: "WSA European Championship 2025",
-        buttonMobile: "Championship 2025"
+        button: "WSA Results 2025",
+        buttonMobile: "WSA Results"
       },
       wsa: {
         title: "WSA European Championship",
@@ -86,7 +100,9 @@ export default function Home() {
         registrationText: "Join this exceptional event and represent your country",
         registerButton: "Register now",
         rulesButton: "Official WSA Rules",
-        rulesInfo: "View the complete competition regulations"
+        rulesInfo: "View the complete competition regulations",
+        noticeTitle: "2025 season completed",
+        noticeText: "The 2025 European season is finished. 2026 will be a world season."
       },
       about: {
         title: "About us",
@@ -115,15 +131,25 @@ export default function Home() {
         emailContact: "Email: fabricefousse29@orange.fr",
         instagramContact: "Instagram: @francestickfighting",
         pdfFile: "WSA-European-Championship-2025-Inscription-EN.pdf"
-      }
-    }
-  };
+        },
+        articles: {
+          title: "Articles",
+          subtitle: "Latest updates",
+          card1Title: "Official results",
+          card1Desc: "Check the rankings and podiums from WSA European Open 2025.",
+          card1Link: "/resultats",
+          card2Title: "All posts",
+          card2Desc: "Find our announcements, recaps and information.",
+          card2Link: "/blog",
+          card3Title: "Photos & Stories",
+          card3Desc: "Follow us on Instagram to see highlights.",
+          card3Link: "https://instagram.com/francestickfighting"
+        }
+      },
+    };
   
   const t = content[language];
   
-  // Build Google Maps URL for the event location using the address lines
-  const mapsQuery = encodeURIComponent(`${t.wsa.location1}, ${t.wsa.location2}`);
-  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`;
   
   return (
     <>
@@ -167,7 +193,7 @@ export default function Home() {
             </p>
             
             <a
-              href="#evenement"
+              href="/resultats"
               className="group relative inline-flex items-center justify-center px-6 sm:px-8 md:px-12 py-4 sm:py-5 md:py-6 overflow-hidden rounded-full bg-white text-[var(--france-bleu)] font-bold text-sm sm:text-base md:text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl"
             >
               <span className="absolute inset-0 bg-gradient-to-r from-[var(--france-bleu)] via-white to-[var(--france-rouge)] opacity-0 group-hover:opacity-10 transition-opacity duration-300"></span>
@@ -186,135 +212,71 @@ export default function Home() {
             {/* Box principale avec fond coloré */}
             <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-lg shadow-sm p-12 text-white">
               {/* Titre */}
-              <div className="text-center mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  {t.wsa.title}
+              <div className="text-center mb-4">
+<h2 className="text-4xl md:text-5xl font-black mb-6">
+                  {language === 'fr' ? 'Événements' : 'Events'}
                 </h2>
-                <p className="text-base text-gray-300 mb-6">{t.wsa.subtitle}</p>
-                <div className="inline-block bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3">
-                  <p className="text-xl font-bold text-[var(--or-light)]">{t.wsa.dates}</p>
-                  <a
-                    href={mapsUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group mt-1 block"
-                    aria-label={`Ouvrir l'adresse dans Google Maps: ${t.wsa.location1}, ${t.wsa.location2}`}
-                  >
-                    <p className="text-sm text-gray-300 group-hover:text-white underline-offset-2 group-hover:underline transition-colors">{t.wsa.location1}</p>
-                    <p className="text-sm text-gray-300 group-hover:text-white underline-offset-2 group-hover:underline transition-colors">{t.wsa.location2}</p>
-                  </a>
+<div className="mx-auto max-w-2xl bg-amber-100/10 border border-amber-300/40 text-amber-100 rounded-md p-5 md:p-6">
+<p className="text-lg md:text-xl font-extrabold mb-1">{t.wsa.noticeTitle}</p>
+<p className="text-base md:text-lg">{t.wsa.noticeText}</p>
                 </div>
               </div>
 
-              {/* Petite carte cliquable vers Google Maps */}
-              <div className="mt-6 mb-8 md:mb-10">
-                <a
-                  href={mapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block relative h-28 md:h-32 rounded-lg overflow-hidden border border-white/20 hover:border-[var(--or-light)] transition-colors"
-                  aria-label={`Ouvrir la carte dans Google Maps: ${t.wsa.location1}, ${t.wsa.location2}`}
-                >
-                  <iframe
-                    src={`https://www.google.com/maps?q=${mapsQuery}&output=embed`}
-                    className="w-full h-full pointer-events-none"
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  />
-                  <div className="absolute inset-0" aria-hidden="true" />
+              
+            </div>
+          </div>
+        </section>
+
+        {/* Articles Section - ajoutée avant Qui sommes-nous */}
+        <section id="articles" className="py-32 px-4 bg-gray-50">
+          <div className="container mx-auto max-w-5xl">
+            <div className="bg-white rounded-lg shadow-sm p-12">
+<h2 className="text-4xl md:text-5xl font-black text-center mb-6 text-[var(--france-bleu)]">
+                {t.articles.title}
+              </h2>
+<p className="text-center text-gray-700 text-lg md:text-xl mb-12">{t.articles.subtitle}</p>
+              <div className="grid md:grid-cols-3 gap-6">
+                <a href={t.articles.card1Link} className="group block border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow bg-gray-50/60">
+<h3 className="text-xl font-extrabold mb-2 text-gray-900 group-hover:text-[var(--or-default)]">{t.articles.card1Title}</h3>
+<p className="text-base text-gray-700 mb-3">{t.articles.card1Desc}</p>
+<span className="inline-flex items-center text-base font-semibold text-[var(--france-bleu)]">En savoir plus<ChevronRight size={16} className="ml-1" /></span>
                 </a>
-              </div>
-              
-              {/* Cartes info */}
-              <div className="grid md:grid-cols-3 gap-4 mb-12">
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center">
-                  <Calendar className="text-[var(--or-light)] mx-auto mb-3" size={28} />
-                  <h3 className="text-base font-bold mb-1">{t.wsa.days}</h3>
-                  <p className="text-xs text-gray-300">{t.wsa.daysDesc}</p>
-                </div>
-                
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center">
-                  <Users className="text-[var(--or-light)] mx-auto mb-3" size={28} />
-                  <h3 className="text-base font-bold mb-1">{t.wsa.countries}</h3>
-                  <p className="text-xs text-gray-300">{t.wsa.countriesDesc}</p>
-                </div>
-                
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center">
-                  <Trophy className="text-[var(--or-light)] mx-auto mb-3" size={28} />
-                  <h3 className="text-base font-bold mb-1">{t.wsa.title2}</h3>
-                  <p className="text-xs text-gray-300">{t.wsa.titleDesc}</p>
-                </div>
-              </div>
-              
-              {/* Formulaire d'inscription et règles */}
-              <div className="border-t border-white/20 pt-8">
-                <div className="text-center mb-8">
-                  <p className="text-lg font-bold mb-4">{t.wsa.registrationOpen}</p>
-                  <p className="text-sm text-gray-300 mb-6 max-w-2xl mx-auto">
-                    {t.wsa.registrationText}
-                  </p>
-                </div>
-                
-                {/* Bouton des règles WSA */}
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 mb-6">
-                  <div className="flex items-center justify-center mb-4">
-                    <FileText className="text-[var(--or-light)] mr-2" size={24} />
-                    <h3 className="text-lg font-bold text-[var(--or-light)]">
-                      {t.wsa.rulesInfo}
-                    </h3>
-                  </div>
-                  <div className="text-center">
-                    <a 
-                      href="https://www.worldsportarnis.co.uk/general-1"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center px-6 py-2.5 bg-white/20 hover:bg-white/30 text-white font-semibold text-sm rounded transition-all border border-white/40"
-                    >
-                      <ExternalLink className="mr-2" size={16} />
-                      {t.wsa.rulesButton}
-                    </a>
-                  </div>
-                </div>
-                
-                {/* Zone de téléchargement du formulaire */}
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 mb-6">
-                  <h3 className="text-lg font-bold text-[var(--or-light)] mb-4 text-center">
-                    {t.contact.registration}
-                  </h3>
-                  <p className="text-sm text-gray-300 mb-6 text-center">
-                    {t.contact.registrationText}
-                  </p>
-                  <div className="text-center">
-                    <a 
-                      href={`/${t.contact.pdfFile}`} 
-                      download={t.contact.pdfFile}
-                      className="inline-flex items-center justify-center px-6 py-2.5 bg-[var(--or-light)] hover:bg-[var(--or-default)] text-gray-900 font-semibold text-sm rounded transition-all"
-                    >
-                      <Download className="mr-2" size={16} />
-                      {t.contact.downloadButton}
-                    </a>
-                  </div>
-                </div>
-                
-                {/* Informations de contact */}
-                <div className="text-center">
-                  <p className="text-sm text-gray-400 mb-4">
-                    {t.contact.emailInfo}
-                  </p>
-                  <div className="flex flex-col md:flex-row justify-center items-center gap-3 md:gap-6">
-                    <div className="flex items-center gap-2">
-                      <Mail className="text-[var(--or-light)]" size={20} />
-                      <p className="text-sm md:text-base font-semibold text-[var(--or-light)]">
-                        fabricefousse29@orange.fr
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Instagram className="text-[var(--or-light)]" size={20} />
-                      <p className="text-sm md:text-base font-semibold text-[var(--or-light)]">
-                        @francestickfighting
-                      </p>
-                    </div>
-                  </div>
+                <a href={t.articles.card2Link} className="group block border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow bg-gray-50/60">
+<h3 className="text-xl font-extrabold mb-2 text-gray-900 group-hover:text-[var(--or-default)]">{t.articles.card2Title}</h3>
+<p className="text-base text-gray-700 mb-3">{t.articles.card2Desc}</p>
+<span className="inline-flex items-center text-base font-semibold text-[var(--france-bleu)]">Voir<ChevronRight size={16} className="ml-1" /></span>
+                </a>
+                <a href={t.articles.card3Link} target="_blank" rel="noopener noreferrer" className="group block border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow bg-gray-50/60">
+<h3 className="text-xl font-extrabold mb-2 text-gray-900 group-hover:text-[var(--or-default)]">{t.articles.card3Title}</h3>
+<p className="text-base text-gray-700 mb-3">{t.articles.card3Desc}</p>
+<span className="inline-flex items-center text-base font-semibold text-[var(--france-bleu)]">Ouvrir<ExternalLink size={16} className="ml-1" /></span>
+                </a>
+</div>
+
+              {/* Réseaux sociaux */}
+              <div className="mt-12 text-center">
+                <h3 className="text-2xl md:text-3xl font-extrabold text-[var(--france-bleu)] mb-4">
+                  {language === 'fr' ? 'Nos réseaux' : 'Our social networks'}
+                </h3>
+                <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6">
+                  <a
+                    href="https://instagram.com/francestickfighting"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center px-4 py-2 border border-gray-200 rounded-full bg-gray-50 hover:bg-white hover:shadow transition"
+                  >
+                    <Instagram size={20} className="mr-2 text-[var(--or-default)]" />
+                    <span className="text-base md:text-lg font-semibold">@francestickfighting</span>
+                  </a>
+                  <a
+                    href="https://www.tiktok.com/@francestickfighting"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center px-4 py-2 border border-gray-200 rounded-full bg-gray-50 hover:bg-white hover:shadow transition"
+                  >
+                    <ExternalLink size={18} className="mr-2 text-[var(--or-default)]" />
+                    <span className="text-base md:text-lg font-semibold">TikTok @francestickfighting</span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -327,16 +289,16 @@ export default function Home() {
             {/* Box principale */}
             <div className="bg-white rounded-lg shadow-sm p-12">
               {/* Titre */}
-              <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-[var(--france-bleu)]">
+<h2 className="text-4xl md:text-5xl font-black text-center mb-12 text-[var(--france-bleu)]">
                 {t.about.title}
               </h2>
               
               {/* Contenu principal */}
               <div className="text-center mb-12">
-                <p className="text-lg text-gray-700 font-semibold mb-4">
+<p className="text-xl md:text-2xl text-gray-700 font-bold mb-5">
                   {t.about.subtitle}
                 </p>
-                <p className="text-base text-gray-600 max-w-3xl mx-auto">
+<p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
                   {t.about.description}
                 </p>
               </div>
@@ -345,20 +307,20 @@ export default function Home() {
               <div className="grid md:grid-cols-3 gap-6">
                 <div className="bg-gray-50 rounded-lg p-6 text-center">
                   <Trophy className="text-[var(--or-default)] mx-auto mb-4" size={32} />
-                  <h4 className="text-lg font-bold text-gray-800">{t.about.competitions}</h4>
-                  <p className="text-sm text-gray-600 mt-2">{t.about.competitionsDesc}</p>
+<h4 className="text-xl font-extrabold text-gray-900">{t.about.competitions}</h4>
+<p className="text-base text-gray-700 mt-2">{t.about.competitionsDesc}</p>
                 </div>
                 
                 <div className="bg-gray-50 rounded-lg p-6 text-center">
                   <Users className="text-[var(--or-default)] mx-auto mb-4" size={32} />
-                  <h4 className="text-lg font-bold text-gray-800">{t.about.community}</h4>
-                  <p className="text-sm text-gray-600 mt-2">{t.about.communityDesc}</p>
+<h4 className="text-xl font-extrabold text-gray-900">{t.about.community}</h4>
+<p className="text-base text-gray-700 mt-2">{t.about.communityDesc}</p>
                 </div>
                 
                 <div className="bg-gray-50 rounded-lg p-6 text-center">
                   <Calendar className="text-[var(--or-default)] mx-auto mb-4" size={32} />
-                  <h4 className="text-lg font-bold text-gray-800">{t.about.training}</h4>
-                  <p className="text-sm text-gray-600 mt-2">{t.about.trainingDesc}</p>
+<h4 className="text-xl font-extrabold text-gray-900">{t.about.training}</h4>
+<p className="text-base text-gray-700 mt-2">{t.about.trainingDesc}</p>
                 </div>
               </div>
             </div>

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, Instagram, Globe } from "lucide-react";
+import { Mail, Instagram, Globe, ExternalLink } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -67,11 +67,35 @@ export default function Footer() {
               prohibe-knives.com
             </span>
           </a>
+
+          {/* Réseaux Prohibe */}
+          <div className="mt-4 flex justify-center items-center gap-6">
+            <a
+              href="https://www.instagram.com/prohibeknives"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center text-white hover:text-[var(--or-light)] transition-colors"
+              aria-label="Instagram Prohibe"
+            >
+              <Instagram size={22} className="mr-2" />
+              <span>Instagram</span>
+            </a>
+            <a
+              href="https://www.tiktok.com/@prohibeknives"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center text-white hover:text-[var(--or-light)] transition-colors"
+              aria-label="TikTok Prohibe"
+            >
+              <ExternalLink size={20} className="mr-2" />
+              <span>TikTok</span>
+            </a>
+          </div>
         </div>
 
         {/* Copyright centré */}
         <div className="text-gray-200">
-          <p>© 2025 France Stick Fighting. Tous droits réservés.</p>
+          <p className="text-base">© 2025 France Stick Fighting. Tous droits réservés.</p>
         </div>
       </div>
     </footer>
